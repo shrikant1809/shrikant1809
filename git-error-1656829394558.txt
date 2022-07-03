@@ -1,5 +1,69 @@
-> git -c user.useConfigOnly=true commit --quiet --allow-empty-message --file - -S
-gpg: skipped "warlock1809 <patilshrikant0918@gmail.com>": No secret key
-gpg: signing failed: No secret key
-error: gpg failed to sign the data
-fatal: failed to write commit object
+// Steps to reduce N to zero by subtracting its most significant digit at every step
+
+<script>
+// javascript program to find the count of Steps to
+// reduce N to zero by subtracting its most
+// significant digit at every step
+// Function to count the number
+	// of digits in a number m
+	function countdig(m) {
+		if (m == 0)
+			return 0;
+		else
+			return 1 + countdig(parseInt(m / 10));
+	}
+
+	// Function to count the number of
+	// steps to reach 0
+	function countSteps(x) {
+		// count the total number of steps
+		var c =0;
+		var last = x;
+
+		// iterate till we reach 0
+		while (last > 0) {
+
+			// count the digits in last
+			var digits = countdig(last);
+
+			// decrease it by 1
+			digits -= 1;
+
+			// find the number on whose division,
+			// we get the first digit
+			var divisor = parseInt( Math.pow(10, digits));
+
+			// first digit in last
+			var first = parseInt(last / divisor);
+
+			// find the first number less than
+			// last where the first digit changes
+			var lastnumber = first * divisor;
+
+			// find the number of numbers
+			// with same first digit that are jumped
+			var skipped = parseInt((last - lastnumber) / first);
+
+			skipped += 1;
+
+			// count the steps
+			c += skipped;
+
+			// the next number with a different
+			// first digit
+			last = last - (first * skipped);
+		}
+
+		return c;
+	}
+
+	// Driver code
+	
+		var n = 14;
+
+		document.write(countSteps(n));
+
+// This code is contributed by shrikant
+</script>
+
+
