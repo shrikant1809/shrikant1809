@@ -1,0 +1,5 @@
+> git -c user.useConfigOnly=true commit --quiet --allow-empty-message --file - -S
+gpg: skipped "warlock1809 <patilshrikant0918@gmail.com>": No secret key
+gpg: signing failed: No secret key
+error: gpg failed to sign the data
+fatal: failed to write commit object
